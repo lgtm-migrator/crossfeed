@@ -65,10 +65,19 @@
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> start</code></pre></div>
 </li>
 <li>
-<p>Generate the initial DB schema:</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">cd</span> backend <span class="token operator">&amp;&amp;</span> <span class="token function">npm</span> run syncdb</code></pre></div>
-<p>If you need to drop and recreate the database, you can run <code class="language-text">npm run syncdb -- -d dangerouslyforce</code>.</p>
-<p>If you are on Windows and the above command doesn't work, try running the following command instead: <code class="language-text">docker-compose exec backend npx sls invoke local -f syncdb</code>.</p>
+<p>Generate the initial DB schema and populate it with sample data:</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">cd</span> backend
+<span class="token comment"># Generate schema</span>
+<span class="token function">npm</span> run syncdb
+<span class="token comment"># Populate sample data</span>
+<span class="token function">npm</span> run syncdb -- -d populate</code></pre></div>
+<p>If you are on Windows, the above commands may not work. Instead, you should run:</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">cd</span> backend
+<span class="token comment"># Generate schema</span>
+docker-compose <span class="token builtin class-name">exec</span> backend npx sls invoke <span class="token builtin class-name">local</span> -f syncdb
+<span class="token comment"># Populate sample data</span>
+docker-compose <span class="token builtin class-name">exec</span> backend npx sls invoke <span class="token builtin class-name">local</span> -f syncdb -d populate</code></pre></div>
+<p>If you ever need to drop and recreate the database, you can run <code class="language-text">npm run syncdb -- -d dangerouslyforce</code>.</p>
 </li>
 <li>Navigate to <a href="http://localhost">http://localhost</a> in a browser.</li>
 <li>
