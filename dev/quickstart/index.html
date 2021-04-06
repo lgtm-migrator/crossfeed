@@ -70,9 +70,9 @@
 <p>Generate the initial DB schema and populate it with sample data:</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">cd</span> backend
 <span class="token comment"># Generate schema</span>
-docker-compose <span class="token builtin class-name">exec</span> backend npx sls invoke <span class="token builtin class-name">local</span> -f syncdb
+<span class="token function">npm</span> run syncdb
 <span class="token comment"># Populate sample data</span>
-docker-compose <span class="token builtin class-name">exec</span> backend npx sls invoke <span class="token builtin class-name">local</span> -f syncdb -d populate</code></pre></div>
+<span class="token function">npm</span> run syncdb -- -d populate</code></pre></div>
 <p>If you ever need to drop and recreate the database, you can run <code class="language-text">npm run syncdb -- -d dangerouslyforce</code>.</p>
 </li>
 <li>Navigate to <a href="http://localhost">http://localhost</a> in a browser.</li>

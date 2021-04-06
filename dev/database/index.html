@@ -120,13 +120,6 @@ use <a href="https://typeorm.io/#/">TypeORM</a> to communicate with it.</p>
 you want to update the database schemas.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">cd</span> backend
 <span class="token comment"># Generate schema</span>
-docker-compose <span class="token builtin class-name">exec</span> backend npx sls invoke <span class="token builtin class-name">local</span> -f syncdb
-<span class="token comment"># Populate sample data</span>
-docker-compose <span class="token builtin class-name">exec</span> backend npx sls invoke <span class="token builtin class-name">local</span> -f syncdb -d populate</code></pre></div>
-<p>If you are using Node 14, you might be able to run the following commands to
-sync a bit faster (without needing to wait for compilation):</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">cd</span> backend <span class="token operator">&amp;&amp;</span> <span class="token function">npm</span> <span class="token function">install</span>
-<span class="token comment"># Generate schema</span>
 <span class="token function">npm</span> run syncdb
 <span class="token comment"># Populate sample data</span>
 <span class="token function">npm</span> run syncdb -- -d populate</code></pre></div>
