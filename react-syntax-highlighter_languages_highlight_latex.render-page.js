@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_latex"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/latex.js":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/latex.js ***!
-  \************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/latex.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/latex.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -208,7 +208,7 @@ function latex(hljs) {
   const BEGIN_ENV = function(envname, starts_mode) {
     return hljs.inherit(
       {
-        begin: '\\\\begin(?=\\s*\\r?\\n?\\s*\\{' + envname + '\\})',
+        begin: '\\\\begin(?=[ \t]*(\\r?\\n[ \t]*)?\\{' + envname + '\\})',
         keywords: {$pattern: /\\[a-zA-Z]+/, keyword: '\\begin'},
         relevance: 0,
       },

@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_elixir"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/elixir.js":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/elixir.js ***!
-  \*************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/elixir.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/elixir.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -34,7 +34,7 @@ function elixir(hljs) {
   };
   const NUMBER = {
     className: 'number',
-    begin: '(\\b0o[0-7_]+)|(\\b0b[01_]+)|(\\b0x[0-9a-fA-F_]+)|(-?\\b[1-9][0-9_]*(.[0-9_]+([eE][-+]?[0-9]+)?)?)',
+    begin: '(\\b0o[0-7_]+)|(\\b0b[01_]+)|(\\b0x[0-9a-fA-F_]+)|(-?\\b[1-9][0-9_]*(\\.[0-9_]+([eE][-+]?[0-9]+)?)?)',
     relevance: 0
   };
   const SIGIL_DELIMITERS = '[/|([{<"\']';
@@ -147,22 +147,22 @@ function elixir(hljs) {
       {
         begin: /~S"""/,
         end: /"""/,
-        contains: []
+        contains: [] // override default
       },
       {
         begin: /~S"/,
         end: /"/,
-        contains: []
+        contains: [] // override default
       },
       {
         begin: /~S'''/,
         end: /'''/,
-        contains: []
+        contains: [] // override default
       },
       {
         begin: /~S'/,
         end: /'/,
-        contains: []
+        contains: [] // override default
       },
       {
         begin: /'/,

@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_vbscript"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/vbscript.js":
-/*!***************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/vbscript.js ***!
-  \***************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/vbscript.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/vbscript.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -82,7 +82,7 @@ function vbscript(hljs) {
     // relevance 0 because this is acting as a beginKeywords really
     relevance:0,
     keywords: {
-      built_in: BUILT_IN_FUNCTIONS.join(" ")
+      built_in: BUILT_IN_FUNCTIONS
     }
   };
 
@@ -96,7 +96,7 @@ function vbscript(hljs) {
         'if then else on error option explicit new private property let get public randomize ' +
         'redim rem select case set stop sub while wend with end to elseif is or xor and not ' +
         'class_initialize class_terminate default preserve in me byval byref step resume goto',
-      built_in: BUILT_IN_OBJECTS.join(" "),
+      built_in: BUILT_IN_OBJECTS,
       literal:
         'true false null nothing empty'
     },

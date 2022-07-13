@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_scala"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/scala.js":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/scala.js ***!
-  \************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/scala.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/scala.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -40,22 +40,23 @@ function scala(hljs) {
     className: 'string',
     variants: [
       {
+        begin: '"""',
+        end: '"""'
+      },
+      {
         begin: '"',
         end: '"',
         illegal: '\\n',
         contains: [ hljs.BACKSLASH_ESCAPE ]
       },
       {
-        begin: '"""',
-        end: '"""',
-        relevance: 10
-      },
-      {
         begin: '[a-z]+"',
         end: '"',
         illegal: '\\n',
-        contains: [ hljs.BACKSLASH_ESCAPE,
-          SUBST ]
+        contains: [
+          hljs.BACKSLASH_ESCAPE,
+          SUBST
+        ]
       },
       {
         className: 'string',

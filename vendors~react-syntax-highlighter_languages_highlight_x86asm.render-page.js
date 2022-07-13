@@ -1,10 +1,10 @@
 exports.ids = ["vendors~react-syntax-highlighter_languages_highlight_x86asm"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/x86asm.js":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/x86asm.js ***!
-  \*************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/x86asm.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/x86asm.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -97,7 +97,7 @@ function x86asm(hljs) {
           // Float number and x87 BCD
           {
             begin: '\\b(?:([0-9][0-9_]*)?\\.[0-9_]*(?:[eE][+-]?[0-9_]+)?|' +
-                   '(0[Xx])?[0-9][0-9_]*\\.?[0-9_]*(?:[pP](?:[+-]?[0-9_]+)?)?)\\b',
+                   '(0[Xx])?[0-9][0-9_]*(\\.[0-9_]*)?(?:[pP](?:[+-]?[0-9_]+)?)?)\\b',
             relevance: 0
           },
 

@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_coffeescript"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/coffeescript.js":
-/*!*******************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/coffeescript.js ***!
-  \*******************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/coffeescript.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/coffeescript.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -189,9 +189,9 @@ function coffeescript(hljs) {
   const excluding = (list) =>
     (kw) => !list.includes(kw);
   const KEYWORDS$1 = {
-    keyword: KEYWORDS.concat(COFFEE_KEYWORDS).filter(excluding(NOT_VALID_KEYWORDS)).join(" "),
-    literal: LITERALS.concat(COFFEE_LITERALS).join(" "),
-    built_in: BUILT_INS.concat(COFFEE_BUILT_INS).join(" ")
+    keyword: KEYWORDS.concat(COFFEE_KEYWORDS).filter(excluding(NOT_VALID_KEYWORDS)),
+    literal: LITERALS.concat(COFFEE_LITERALS),
+    built_in: BUILT_INS.concat(COFFEE_BUILT_INS)
   };
   const JS_IDENT_RE = '[A-Za-z$_][0-9A-Za-z$_]*';
   const SUBST = {
@@ -285,7 +285,7 @@ function coffeescript(hljs) {
   const TITLE = hljs.inherit(hljs.TITLE_MODE, {
     begin: JS_IDENT_RE
   });
-  const PARAMS_RE = '(\\(.*\\))?\\s*\\B[-=]>';
+  const POSSIBLE_PARAMS_RE = '(\\(.*\\)\\s*)?\\B[-=]>';
   const PARAMS = {
     className: 'params',
     begin: '\\([^\\(]',
@@ -314,7 +314,7 @@ function coffeescript(hljs) {
       hljs.HASH_COMMENT_MODE,
       {
         className: 'function',
-        begin: '^\\s*' + JS_IDENT_RE + '\\s*=\\s*' + PARAMS_RE,
+        begin: '^\\s*' + JS_IDENT_RE + '\\s*=\\s*' + POSSIBLE_PARAMS_RE,
         end: '[-=]>',
         returnBegin: true,
         contains: [
@@ -328,7 +328,7 @@ function coffeescript(hljs) {
         relevance: 0,
         contains: [{
           className: 'function',
-          begin: PARAMS_RE,
+          begin: POSSIBLE_PARAMS_RE,
           end: '[-=]>',
           returnBegin: true,
           contains: [PARAMS]

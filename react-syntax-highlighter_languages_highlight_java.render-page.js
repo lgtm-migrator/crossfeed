@@ -1,12 +1,47 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_java"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/java.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/java.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/java.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/java.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
+
+// https://docs.oracle.com/javase/specs/jls/se15/html/jls-3.html#jls-3.10
+var decimalDigits = '[0-9](_*[0-9])*';
+var frac = `\\.(${decimalDigits})`;
+var hexDigits = '[0-9a-fA-F](_*[0-9a-fA-F])*';
+var NUMERIC = {
+  className: 'number',
+  variants: [
+    // DecimalFloatingPointLiteral
+    // including ExponentPart
+    { begin: `(\\b(${decimalDigits})((${frac})|\\.)?|(${frac}))` +
+      `[eE][+-]?(${decimalDigits})[fFdD]?\\b` },
+    // excluding ExponentPart
+    { begin: `\\b(${decimalDigits})((${frac})[fFdD]?\\b|\\.([fFdD]\\b)?)` },
+    { begin: `(${frac})[fFdD]?\\b` },
+    { begin: `\\b(${decimalDigits})[fFdD]\\b` },
+
+    // HexadecimalFloatingPointLiteral
+    { begin: `\\b0[xX]((${hexDigits})\\.?|(${hexDigits})?\\.(${hexDigits}))` +
+      `[pP][+-]?(${decimalDigits})[fFdD]?\\b` },
+
+    // DecimalIntegerLiteral
+    { begin: '\\b(0|[1-9](_*[0-9])*)[lL]?\\b' },
+
+    // HexIntegerLiteral
+    { begin: `\\b0[xX](${hexDigits})[lL]?\\b` },
+
+    // OctalIntegerLiteral
+    { begin: '\\b0(_*[0-7])*[lL]?\\b' },
+
+    // BinaryIntegerLiteral
+    { begin: '\\b0[bB][01](_*[01])*[lL]?\\b' },
+  ],
+  relevance: 0
+};
 
 /*
 Language: Java
@@ -35,41 +70,7 @@ function java(hljs) {
       },
     ]
   };
-
-  // https://docs.oracle.com/javase/specs/jls/se15/html/jls-3.html#jls-3.10
-  var decimalDigits = '[0-9](_*[0-9])*';
-  var frac = `\\.(${decimalDigits})`;
-  var hexDigits = '[0-9a-fA-F](_*[0-9a-fA-F])*';
-  var NUMBER = {
-    className: 'number',
-    variants: [
-      // DecimalFloatingPointLiteral
-      // including ExponentPart
-      { begin: `(\\b(${decimalDigits})((${frac})|\\.)?|(${frac}))` +
-        `[eE][+-]?(${decimalDigits})[fFdD]?\\b` },
-      // excluding ExponentPart
-      { begin: `\\b(${decimalDigits})((${frac})[fFdD]?\\b|\\.([fFdD]\\b)?)` },
-      { begin: `(${frac})[fFdD]?\\b` },
-      { begin: `\\b(${decimalDigits})[fFdD]\\b` },
-
-      // HexadecimalFloatingPointLiteral
-      { begin: `\\b0[xX]((${hexDigits})\\.?|(${hexDigits})?\\.(${hexDigits}))` +
-        `[pP][+-]?(${decimalDigits})[fFdD]?\\b` },
-
-      // DecimalIntegerLiteral
-      { begin: '\\b(0|[1-9](_*[0-9])*)[lL]?\\b' },
-
-      // HexIntegerLiteral
-      { begin: `\\b0[xX](${hexDigits})[lL]?\\b` },
-
-      // OctalIntegerLiteral
-      { begin: '\\b0(_*[0-7])*[lL]?\\b' },
-
-      // BinaryIntegerLiteral
-      { begin: '\\b0[bB][01](_*[01])*[lL]?\\b' },
-    ],
-    relevance: 0
-  };
+  const NUMBER = NUMERIC;
 
   return {
     name: 'Java',
@@ -107,6 +108,11 @@ function java(hljs) {
       {
         className: 'class',
         beginKeywords: 'class interface enum', end: /[{;=]/, excludeEnd: true,
+        // TODO: can this be removed somehow?
+        // an extra boost because Java is more popular than other languages with
+        // this same syntax feature (this is just to preserve our tests passing
+        // for now)
+        relevance: 1,
         keywords: 'class interface enum',
         illegal: /[:"\[\]]/,
         contains: [

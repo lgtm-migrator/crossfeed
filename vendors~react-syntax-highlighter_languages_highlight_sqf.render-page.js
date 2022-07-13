@@ -1,10 +1,10 @@
 exports.ids = ["vendors~react-syntax-highlighter_languages_highlight_sqf"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/sqf.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/sqf.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/sqf.js":
+/*!********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/sqf.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -21,7 +21,7 @@ function sqf(hljs) {
   // In SQF, a variable start with _
   const VARIABLE = {
     className: 'variable',
-    begin: /\b_+[a-zA-Z_]\w*/
+    begin: /\b_+[a-zA-Z]\w*/
   };
 
   // In SQF, a function should fit myTag_fnc_myFunction pattern

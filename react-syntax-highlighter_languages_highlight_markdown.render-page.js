@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_markdown"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/markdown.js":
-/*!***************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/markdown.js ***!
-  \***************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/markdown.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/markdown.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -57,10 +57,10 @@ function markdown(hljs) {
     variants: [
       // TODO: fix to allow these to work with sublanguage also
       {
-        begin: '(`{3,})(.|\\n)*?\\1`*[ ]*'
+        begin: '(`{3,})[^`](.|\\n)*?\\1`*[ ]*'
       },
       {
-        begin: '(~{3,})(.|\\n)*?\\1~*[ ]*'
+        begin: '(~{3,})[^~](.|\\n)*?\\1~*[ ]*'
       },
       // needed to allow markdown as a sublanguage to work
       {
@@ -172,7 +172,7 @@ function markdown(hljs) {
   };
   const BOLD = {
     className: 'strong',
-    contains: [],
+    contains: [], // defined later
     variants: [
       {
         begin: /_{2}/,
@@ -186,7 +186,7 @@ function markdown(hljs) {
   };
   const ITALIC = {
     className: 'emphasis',
-    contains: [],
+    contains: [], // defined later
     variants: [
       {
         begin: /\*(?!\*)/,

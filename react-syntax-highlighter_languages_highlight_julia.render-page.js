@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_julia"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/julia.js":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/julia.js ***!
-  \************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/julia.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/julia.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -333,9 +333,9 @@ function julia(hljs) {
 
   var KEYWORDS = {
     $pattern: VARIABLE_NAME_RE,
-    keyword: KEYWORD_LIST.join(" "),
-    literal: LITERAL_LIST.join(" "),
-    built_in: BUILT_IN_LIST.join(" "),
+    keyword: KEYWORD_LIST,
+    literal: LITERAL_LIST,
+    built_in: BUILT_IN_LIST,
   };
 
   // placeholder for recursive self-reference

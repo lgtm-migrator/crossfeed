@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_erlang"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/erlang.js":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/erlang.js ***!
-  \*************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/erlang.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/erlang.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -126,6 +126,30 @@ function erlang(hljs) {
   TUPLE.contains = BASIC_MODES;
   RECORD_ACCESS.contains[1].contains = BASIC_MODES;
 
+  const DIRECTIVES = [
+    "-module",
+    "-record",
+    "-undef",
+    "-export",
+    "-ifdef",
+    "-ifndef",
+    "-author",
+    "-copyright",
+    "-doc",
+    "-vsn",
+    "-import",
+    "-include",
+    "-include_lib",
+    "-compile",
+    "-define",
+    "-else",
+    "-endif",
+    "-file",
+    "-behaviour",
+    "-behavior",
+    "-spec"
+  ];
+
   const PARAMS = {
     className: 'params',
     begin: '\\(',
@@ -165,9 +189,7 @@ function erlang(hljs) {
         returnBegin: true,
         keywords: {
           $pattern: '-' + hljs.IDENT_RE,
-          keyword: '-module -record -undef -export -ifdef -ifndef -author -copyright -doc -vsn ' +
-          '-import -include -include_lib -compile -define -else -endif -file -behaviour ' +
-          '-behavior -spec'
+          keyword: DIRECTIVES.map(x => `${x}|1.5`).join(" ")
         },
         contains: [PARAMS]
       },

@@ -1,10 +1,10 @@
 exports.ids = ["vendors~react-syntax-highlighter_languages_highlight_typescript"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/typescript.js":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/typescript.js ***!
-  \*****************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/typescript.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/typescript.js ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -236,9 +236,9 @@ function javascript(hljs) {
   };
   const KEYWORDS$1 = {
     $pattern: IDENT_RE,
-    keyword: KEYWORDS.join(" "),
-    literal: LITERALS.join(" "),
-    built_in: BUILT_INS.join(" ")
+    keyword: KEYWORDS,
+    literal: LITERALS,
+    built_in: BUILT_INS
   };
 
   // https://tc39.es/ecma262/#sec-literals-numeric-literals
@@ -313,7 +313,7 @@ function javascript(hljs) {
     ]
   };
   const JSDOC_COMMENT = hljs.COMMENT(
-    '/\\*\\*',
+    /\/\*\*(?!\/)/,
     '\\*/',
     {
       relevance: 0,
@@ -460,8 +460,8 @@ function javascript(hljs) {
             '[^()]*(\\(' +
             '[^()]*(\\(' +
             '[^()]*' +
-            '\\))*[^()]*' +
-            '\\))*[^()]*' +
+            '\\)[^()]*)*' +
+            '\\)[^()]*)*' +
             '\\)|' + hljs.UNDERSCORE_IDENT_RE + ')\\s*=>',
             returnBegin: true,
             end: '\\s*=>',
@@ -551,8 +551,8 @@ function javascript(hljs) {
           '[^()]*(\\(' +
             '[^()]*(\\(' +
               '[^()]*' +
-            '\\))*[^()]*' +
-          '\\))*[^()]*' +
+            '\\)[^()]*)*' +
+          '\\)[^()]*)*' +
           '\\)\\s*\\{', // end parens
         returnBegin:true,
         contains: [
@@ -657,9 +657,9 @@ function typescript(hljs) {
   ];
   const KEYWORDS$1 = {
     $pattern: IDENT_RE,
-    keyword: KEYWORDS.concat(TS_SPECIFIC_KEYWORDS).join(" "),
-    literal: LITERALS.join(" "),
-    built_in: BUILT_INS.concat(TYPES).join(" ")
+    keyword: KEYWORDS.concat(TS_SPECIFIC_KEYWORDS),
+    literal: LITERALS,
+    built_in: BUILT_INS.concat(TYPES)
   };
   const DECORATOR = {
     className: 'meta',

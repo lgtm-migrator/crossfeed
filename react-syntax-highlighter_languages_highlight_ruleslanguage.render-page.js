@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_ruleslanguage"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/ruleslanguage.js":
-/*!********************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/ruleslanguage.js ***!
-  \********************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/ruleslanguage.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/ruleslanguage.js ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -73,7 +73,7 @@ function ruleslanguage(hljs) {
         className: 'literal',
         variants: [
           { // looks like #-comment
-            begin: '#\\s+[a-zA-Z .]*',
+            begin: '#\\s+',
             relevance: 0
           },
           {

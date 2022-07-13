@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_livescript"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/livescript.js":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/livescript.js ***!
-  \*****************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/livescript.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/livescript.js ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -201,9 +201,9 @@ function livescript(hljs) {
     '__indexOf'
   ];
   const KEYWORDS$1 = {
-    keyword: KEYWORDS.concat(LIVESCRIPT_KEYWORDS).join(" "),
-    literal: LITERALS.concat(LIVESCRIPT_LITERALS).join(" "),
-    built_in: BUILT_INS.concat(LIVESCRIPT_BUILT_INS).join(" ")
+    keyword: KEYWORDS.concat(LIVESCRIPT_KEYWORDS),
+    literal: LITERALS.concat(LIVESCRIPT_LITERALS),
+    built_in: BUILT_INS.concat(LIVESCRIPT_BUILT_INS)
   };
   const JS_IDENT_RE = '[A-Za-z$_](?:-[0-9A-Za-z$_]|[0-9A-Za-z$_])*';
   const TITLE = hljs.inherit(hljs.TITLE_MODE, {
@@ -339,15 +339,15 @@ function livescript(hljs) {
         returnBegin: true,
         variants: [
           {
-            begin: '(' + JS_IDENT_RE + '\\s*(?:=|:=)\\s*)?(\\(.*\\))?\\s*\\B->\\*?',
+            begin: '(' + JS_IDENT_RE + '\\s*(?:=|:=)\\s*)?(\\(.*\\)\\s*)?\\B->\\*?',
             end: '->\\*?'
           },
           {
-            begin: '(' + JS_IDENT_RE + '\\s*(?:=|:=)\\s*)?!?(\\(.*\\))?\\s*\\B[-~]{1,2}>\\*?',
+            begin: '(' + JS_IDENT_RE + '\\s*(?:=|:=)\\s*)?!?(\\(.*\\)\\s*)?\\B[-~]{1,2}>\\*?',
             end: '[-~]{1,2}>\\*?'
           },
           {
-            begin: '(' + JS_IDENT_RE + '\\s*(?:=|:=)\\s*)?(\\(.*\\))?\\s*\\B!?[-~]{1,2}>\\*?',
+            begin: '(' + JS_IDENT_RE + '\\s*(?:=|:=)\\s*)?(\\(.*\\)\\s*)?\\B!?[-~]{1,2}>\\*?',
             end: '!?[-~]{1,2}>\\*?'
           }
         ]

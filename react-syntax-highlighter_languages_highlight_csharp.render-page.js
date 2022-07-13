@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_csharp"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/csharp.js":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/csharp.js ***!
-  \*************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/csharp.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/csharp.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -158,9 +158,9 @@ function csharp(hljs) {
   ];
 
   var KEYWORDS = {
-    keyword: NORMAL_KEYWORDS.concat(CONTEXTUAL_KEYWORDS).join(' '),
-    built_in: BUILT_IN_KEYWORDS.join(' '),
-    literal: LITERAL_KEYWORDS.join(' ')
+    keyword: NORMAL_KEYWORDS.concat(CONTEXTUAL_KEYWORDS),
+    built_in: BUILT_IN_KEYWORDS,
+    literal: LITERAL_KEYWORDS
   };
   var TITLE_MODE = hljs.inherit(hljs.TITLE_MODE, {begin: '[a-zA-Z](\\.?\\w)*'});
   var NUMBERS = {
@@ -335,7 +335,7 @@ function csharp(hljs) {
       },
       {
         className: 'function',
-        begin: '(' + TYPE_IDENT_RE + '\\s+)+' + hljs.IDENT_RE + '\\s*(<.+>)?\\s*\\(', returnBegin: true,
+        begin: '(' + TYPE_IDENT_RE + '\\s+)+' + hljs.IDENT_RE + '\\s*(<.+>\\s*)?\\(', returnBegin: true,
         end: /\s*[{;=]/, excludeEnd: true,
         keywords: KEYWORDS,
         contains: [
@@ -345,7 +345,7 @@ function csharp(hljs) {
             relevance: 0
           },
           {
-            begin: hljs.IDENT_RE + '\\s*(<.+>)?\\s*\\(', returnBegin: true,
+            begin: hljs.IDENT_RE + '\\s*(<.+>\\s*)?\\(', returnBegin: true,
             contains: [
               hljs.TITLE_MODE,
               GENERIC_MODIFIER

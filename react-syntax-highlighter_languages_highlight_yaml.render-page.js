@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_yaml"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/yaml.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/yaml.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/yaml.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/yaml.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -80,7 +80,6 @@ function yaml(hljs) {
     end: ',',
     endsWithParent: true,
     excludeEnd: true,
-    contains: [],
     keywords: LITERALS,
     relevance: 0
   };
@@ -112,7 +111,7 @@ function yaml(hljs) {
       // Indentation of subsequent lines must be the same to
       // be considered part of the block
       className: 'string',
-      begin: '[\\|>]([1-9]?[+-])?[ ]*\\n( +)[^\\n]+\\n(\\2[^\\n]+\\n?)*'
+      begin: '[\\|>]([1-9]?[+-])?[ ]*\\n( +)[^ ][^\\n]*\\n(\\2[^\\n]+\\n?)*'
     },
     { // Ruby/Rails erb
       begin: '<%[%=-]?',

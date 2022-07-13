@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_d"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/d.js":
-/*!********************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/d.js ***!
-  \********************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/d.js":
+/*!******************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/d.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -72,7 +72,7 @@ function d(hljs) {
 
   const decimal_exponent_re = '([eE][+-]?' + decimal_integer_nosus_re + ')';
   const decimal_float_re = '(' + decimal_integer_nosus_re + '(\\.\\d*|' + decimal_exponent_re + ')|' +
-                '\\d+\\.' + decimal_integer_nosus_re + decimal_integer_nosus_re + '|' +
+                '\\d+\\.' + decimal_integer_nosus_re + '|' +
                 '\\.' + decimal_integer_re + decimal_exponent_re + '?' +
               ')';
   const hexadecimal_float_re = '(0[xX](' +

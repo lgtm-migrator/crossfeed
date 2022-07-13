@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_scilab"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/scilab.js":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/scilab.js ***!
-  \*************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/scilab.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/scilab.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -63,14 +63,15 @@ function scilab(hljs) {
           }
         ]
       },
+      // seems to be a guard against [ident]' or [ident].
+      // perhaps to prevent attributes from flagging as keywords?
       {
-        begin: '[a-zA-Z_][a-zA-Z_0-9]*(\'+[\\.\']*|[\\.\']+)',
-        end: '',
+        begin: '[a-zA-Z_][a-zA-Z_0-9]*[\\.\']+',
         relevance: 0
       },
       {
         begin: '\\[',
-        end: '\\]\'*[\\.\']*',
+        end: '\\][\\.\']*',
         relevance: 0,
         contains: COMMON_CONTAINS
       },

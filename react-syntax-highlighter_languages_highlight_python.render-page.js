@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_python"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/python.js":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/python.js ***!
-  \*************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/python.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/python.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -134,9 +134,9 @@ function python(hljs) {
   ];
 
   const KEYWORDS = {
-    keyword: RESERVED_WORDS.join(' '),
-    built_in: BUILT_INS.join(' '),
-    literal: LITERALS.join(' ')
+    keyword: RESERVED_WORDS,
+    built_in: BUILT_INS,
+    literal: LITERALS
   };
 
   const PROMPT = {

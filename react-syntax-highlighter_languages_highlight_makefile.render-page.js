@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_makefile"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/makefile.js":
-/*!***************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/makefile.js ***!
-  \***************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/makefile.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/makefile.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -79,7 +79,8 @@ function makefile(hljs) {
     name: 'Makefile',
     aliases: [
       'mk',
-      'mak'
+      'mak',
+      'make',
     ],
     keywords: {
       $pattern: /[\w-]+/,

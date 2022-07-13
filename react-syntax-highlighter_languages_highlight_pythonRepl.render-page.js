@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_pythonRepl"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/python-repl.js":
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/python-repl.js ***!
-  \******************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/python-repl.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/python-repl.js ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

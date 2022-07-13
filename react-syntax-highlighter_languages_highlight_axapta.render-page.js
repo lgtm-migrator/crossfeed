@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_axapta"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/axapta.js":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/axapta.js ***!
-  \*************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/axapta.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/axapta.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -149,9 +149,9 @@ function axapta(hljs) {
   ];
 
   const KEYWORDS = {
-    keyword: NORMAL_KEYWORDS.join(' '),
-    built_in: BUILT_IN_KEYWORDS.join(' '),
-    literal: LITERAL_KEYWORDS.join(' ')
+    keyword: NORMAL_KEYWORDS,
+    built_in: BUILT_IN_KEYWORDS,
+    literal: LITERAL_KEYWORDS
   };
 
   return {

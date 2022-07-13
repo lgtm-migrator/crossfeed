@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_flix"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/flix.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/flix.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/flix.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/flix.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -32,6 +32,7 @@ function flix(hljs) {
 
   const NAME = {
     className: 'title',
+    relevance: 0,
     begin: /[^0-9\n\t "'(),.`{}\[\]:;][^\n\t "'(),.`{}\[\]:;]+|[^0-9\n\t "'(),.`{}\[\]:;=]/
   };
 

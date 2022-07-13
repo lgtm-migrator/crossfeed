@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_zephir"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/zephir.js":
-/*!*************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/zephir.js ***!
-  \*************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/zephir.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/zephir.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -13,8 +13,10 @@ exports.modules = {
  Description: Zephir, an open source, high-level language designed to ease the creation and maintainability of extensions for PHP with a focus on type and memory safety.
  Author: Oleg Efimov <efimovov@gmail.com>
  Website: https://zephir-lang.com/en
+ Audit: 2020
  */
 
+/** @type LanguageFn */
 function zephir(hljs) {
   const STRING = {
     className: 'string',
@@ -69,21 +71,21 @@ function zephir(hljs) {
     contains: [
       hljs.C_LINE_COMMENT_MODE,
       hljs.COMMENT(
-        '/\\*',
-        '\\*/',
+        /\/\*/,
+        /\*\//,
         {
           contains: [
             {
               className: 'doctag',
-              begin: '@[A-Za-z]+'
+              begin: /@[A-Za-z]+/
             }
           ]
         }
       ),
       {
         className: 'string',
-        begin: '<<<[\'"]?\\w+[\'"]?$',
-        end: '^\\w+;',
+        begin: /<<<['"]?\w+['"]?$/,
+        end: /^\w+;/,
         contains: [ hljs.BACKSLASH_ESCAPE ]
       },
       {
@@ -95,13 +97,13 @@ function zephir(hljs) {
         beginKeywords: 'function fn',
         end: /[;{]/,
         excludeEnd: true,
-        illegal: '\\$|\\[|%',
+        illegal: /\$|\[|%/,
         contains: [
           TITLE_MODE,
           {
             className: 'params',
-            begin: '\\(',
-            end: '\\)',
+            begin: /\(/,
+            end: /\)/,
             keywords: KEYWORDS,
             contains: [
               'self',
@@ -117,7 +119,7 @@ function zephir(hljs) {
         beginKeywords: 'class interface',
         end: /\{/,
         excludeEnd: true,
-        illegal: /[:\(\$"]/,
+        illegal: /[:($"]/,
         contains: [
           {
             beginKeywords: 'extends implements'
@@ -127,17 +129,17 @@ function zephir(hljs) {
       },
       {
         beginKeywords: 'namespace',
-        end: ';',
-        illegal: /[\.']/,
+        end: /;/,
+        illegal: /[.']/,
         contains: [ TITLE_MODE ]
       },
       {
         beginKeywords: 'use',
-        end: ';',
+        end: /;/,
         contains: [ TITLE_MODE ]
       },
       {
-        begin: '=>' // No markup, just a relevance booster
+        begin: /=>/ // No markup, just a relevance booster
       },
       STRING,
       NUMBER

@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_dart"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/dart.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/dart.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/dart.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/dart.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -152,7 +152,7 @@ function dart(hljs) {
           'querySelector',
           'querySelectorAll',
           'window'
-        ]).join(' '),
+        ]),
     $pattern: /[A-Za-z][A-Za-z0-9_]*\??/
   };
 
@@ -162,15 +162,16 @@ function dart(hljs) {
     contains: [
       STRING,
       hljs.COMMENT(
-        '/\\*\\*',
-        '\\*/', {
+        /\/\*\*(?!\/)/,
+        /\*\//,
+        {
           subLanguage: 'markdown',
           relevance: 0
         }
       ),
       hljs.COMMENT(
-        '///+\\s*',
-        '$', {
+        /\/{3,} ?/,
+        /$/, {
           contains: [{
             subLanguage: 'markdown',
             begin: '.',

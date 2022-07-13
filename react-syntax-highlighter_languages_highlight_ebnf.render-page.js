@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_ebnf"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/ebnf.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/ebnf.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/ebnf.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/ebnf.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -20,7 +20,7 @@ function ebnf(hljs) {
 
   const nonTerminalMode = {
     className: "attribute",
-    begin: /^[ ]*[a-zA-Z][a-zA-Z_-]*([\s_-]+[a-zA-Z][a-zA-Z]*)*/
+    begin: /^[ ]*[a-zA-Z]+([\s_-]+[a-zA-Z]+)*/
   };
 
   const specialSequenceMode = {

@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_phpTemplate"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/php-template.js":
-/*!*******************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/php-template.js ***!
-  \*******************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/php-template.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/php-template.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

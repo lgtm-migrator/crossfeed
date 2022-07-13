@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_handlebars"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/handlebars.js":
-/*!*****************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/handlebars.js ***!
-  \*****************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/handlebars.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/handlebars.js ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -25,11 +25,39 @@ function source(re) {
 }
 
 /**
+ * @param {RegExp | string } re
+ * @returns {string}
+ */
+function anyNumberOfTimes(re) {
+  return concat('(', re, ')*');
+}
+
+/**
+ * @param {RegExp | string } re
+ * @returns {string}
+ */
+function optional(re) {
+  return concat('(', re, ')?');
+}
+
+/**
  * @param {...(RegExp | string) } args
  * @returns {string}
  */
 function concat(...args) {
   const joined = args.map((x) => source(x)).join("");
+  return joined;
+}
+
+/**
+ * Any of the passed expresssions may match
+ *
+ * Creates a huge this | this | that | that match
+ * @param {(RegExp | string)[] } args
+ * @returns {string}
+ */
+function either(...args) {
+  const joined = '(' + args.map((x) => source(x)).join("|") + ")";
   return joined;
 }
 
@@ -74,7 +102,7 @@ function handlebars(hljs) {
       'view',
       'with',
       'yield'
-    ].join(" ")
+    ]
   };
 
   const LITERALS = {
@@ -83,27 +111,32 @@ function handlebars(hljs) {
       'false',
       'undefined',
       'null'
-    ].join(" ")
+    ]
   };
 
   // as defined in https://handlebarsjs.com/guide/expressions.html#literal-segments
   // this regex matches literal segments like ' abc ' or [ abc ] as well as helpers and paths
   // like a/b, ./abc/cde, and abc.bcd
 
-  const DOUBLE_QUOTED_ID_REGEX = /".*?"/;
-  const SINGLE_QUOTED_ID_REGEX = /'.*?'/;
-  const BRACKET_QUOTED_ID_REGEX = /\[.*?\]/;
+  const DOUBLE_QUOTED_ID_REGEX = /""|"[^"]+"/;
+  const SINGLE_QUOTED_ID_REGEX = /''|'[^']+'/;
+  const BRACKET_QUOTED_ID_REGEX = /\[\]|\[[^\]]+\]/;
   const PLAIN_ID_REGEX = /[^\s!"#%&'()*+,.\/;<=>@\[\\\]^`{|}~]+/;
-  const PATH_DELIMITER_REGEX = /\.|\//;
+  const PATH_DELIMITER_REGEX = /(\.|\/)/;
+  const ANY_ID = either(
+    DOUBLE_QUOTED_ID_REGEX,
+    SINGLE_QUOTED_ID_REGEX,
+    BRACKET_QUOTED_ID_REGEX,
+    PLAIN_ID_REGEX
+    );
 
   const IDENTIFIER_REGEX = concat(
-    '(',
-    SINGLE_QUOTED_ID_REGEX, '|',
-    DOUBLE_QUOTED_ID_REGEX, '|',
-    BRACKET_QUOTED_ID_REGEX, '|',
-    PLAIN_ID_REGEX, '|',
-    PATH_DELIMITER_REGEX,
-    ')+'
+    optional(/\.|\.\/|\//), // relative or absolute path
+    ANY_ID,
+    anyNumberOfTimes(concat(
+      PATH_DELIMITER_REGEX,
+      ANY_ID
+    ))
   );
 
   // identifier followed by a equal-sign (without the equal sign)

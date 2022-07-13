@@ -1,23 +1,50 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_aspectj"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/aspectj.js":
-/*!**************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/aspectj.js ***!
-  \**************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/aspectj.js":
+/*!************************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/aspectj.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
+
+/**
+ * @param {string} value
+ * @returns {RegExp}
+ * */
+
+/**
+ * @param {RegExp | string } re
+ * @returns {string}
+ */
+function source(re) {
+  if (!re) return null;
+  if (typeof re === "string") return re;
+
+  return re.source;
+}
+
+/**
+ * @param {...(RegExp | string) } args
+ * @returns {string}
+ */
+function concat(...args) {
+  const joined = args.map((x) => source(x)).join("");
+  return joined;
+}
 
 /*
 Language: AspectJ
 Author: Hakan Ozler <ozler.hakan@gmail.com>
 Website: https://www.eclipse.org/aspectj/
 Description: Syntax Highlighting for the AspectJ Language which is a general-purpose aspect-oriented extension to the Java programming language.
- */
+Audit: 2020
+*/
 
 /** @type LanguageFn */
 function aspectj(hljs) {
-  const KEYWORDS = 'false synchronized int abstract float private char boolean static null if const ' +
+  const KEYWORDS =
+    'false synchronized int abstract float private char boolean static null if const ' +
     'for true while long throw strictfp finally protected import native final return void ' +
     'enum else extends implements break transient new catch instanceof byte super volatile case ' +
     'assert short package default double public try this switch continue throws privileged ' +
@@ -33,8 +60,8 @@ function aspectj(hljs) {
     illegal: /<\/|#/,
     contains: [
       hljs.COMMENT(
-        '/\\*\\*',
-        '\\*/',
+        /\/\*\*/,
+        /\*\//,
         {
           relevance: 0,
           contains: [
@@ -45,7 +72,7 @@ function aspectj(hljs) {
             },
             {
               className: 'doctag',
-              begin: '@[A-Za-z]+'
+              begin: /@[A-Za-z]+/
             }
           ]
         }
@@ -94,11 +121,13 @@ function aspectj(hljs) {
         end: /[)]/,
         excludeEnd: false,
         illegal: /["\[\]]/,
-        contains: [{
-          begin: hljs.UNDERSCORE_IDENT_RE + '\\s*\\(',
-          returnBegin: true,
-          contains: [hljs.UNDERSCORE_TITLE_MODE]
-        }]
+        contains: [
+          {
+            begin: concat(hljs.UNDERSCORE_IDENT_RE, /\s*\(/),
+            returnBegin: true,
+            contains: [ hljs.UNDERSCORE_TITLE_MODE ]
+          }
+        ]
       },
       {
         begin: /[:]/,
@@ -110,7 +139,7 @@ function aspectj(hljs) {
         illegal: /["\[\]]/,
         contains: [
           {
-            begin: hljs.UNDERSCORE_IDENT_RE + '\\s*\\(',
+            begin: concat(hljs.UNDERSCORE_IDENT_RE, /\s*\(/),
             keywords: KEYWORDS + ' ' + SHORTKEYS,
             relevance: 0
           },
@@ -125,17 +154,17 @@ function aspectj(hljs) {
       {
         // the function class is a bit different for AspectJ compared to the Java language
         className: 'function',
-        begin: /\w+ +\w+(\.)?\w+\s*\([^\)]*\)\s*((throws)[\w\s,]+)?[\{;]/,
+        begin: /\w+ +\w+(\.\w+)?\s*\([^\)]*\)\s*((throws)[\w\s,]+)?[\{;]/,
         returnBegin: true,
         end: /[{;=]/,
         keywords: KEYWORDS,
         excludeEnd: true,
         contains: [
           {
-            begin: hljs.UNDERSCORE_IDENT_RE + '\\s*\\(',
+            begin: concat(hljs.UNDERSCORE_IDENT_RE, /\s*\(/),
             returnBegin: true,
             relevance: 0,
-            contains: [hljs.UNDERSCORE_TITLE_MODE]
+            contains: [ hljs.UNDERSCORE_TITLE_MODE ]
           },
           {
             className: 'params',
@@ -158,7 +187,7 @@ function aspectj(hljs) {
       {
         // annotation is also used in this language
         className: 'meta',
-        begin: '@[A-Za-z]+'
+        begin: /@[A-Za-z]+/
       }
     ]
   };

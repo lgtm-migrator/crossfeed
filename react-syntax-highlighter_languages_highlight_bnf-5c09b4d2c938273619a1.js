@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[30],{ddo8:function(n,e){n.exports=function(n){return{name:"Backus–Naur Form",contains:[{className:"attribute",begin:/</,end:/>/},{begin:/::=/,end:/$/,contains:[{begin:/</,end:/>/},n.C_LINE_COMMENT_MODE,n.C_BLOCK_COMMENT_MODE,n.APOS_STRING_MODE,n.QUOTE_STRING_MODE]}]}}}}]);
+//# sourceMappingURL=react-syntax-highlighter_languages_highlight_bnf-5c09b4d2c938273619a1.js.map

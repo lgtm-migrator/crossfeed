@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_nim"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/nim.js":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/nim.js ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/nim.js":
+/*!********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/nim.js ***!
+  \********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

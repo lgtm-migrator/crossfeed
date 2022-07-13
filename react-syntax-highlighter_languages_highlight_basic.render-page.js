@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_basic"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/basic.js":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/basic.js ***!
-  \************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/basic.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/basic.js ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -55,7 +55,7 @@ function basic(hljs) {
       {
         // Match typed numeric constants (1000, 12.34!, 1.2e5, 1.5#, 1.2D2)
         className: 'number',
-        begin: '\\b([0-9]+[0-9edED\.]*[#\!]?)',
+        begin: '\\b\\d+(\\.\\d+)?([edED]\\d+)?[#\!]?',
         relevance: 0
       },
       {

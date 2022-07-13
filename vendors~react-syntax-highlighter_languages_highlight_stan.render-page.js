@@ -1,10 +1,10 @@
 exports.ids = ["vendors~react-syntax-highlighter_languages_highlight_stan"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/stan.js":
-/*!***********************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/stan.js ***!
-  \***********************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/stan.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/stan.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -483,9 +483,9 @@ function stan(hljs) {
     aliases: [ 'stanfuncs' ],
     keywords: {
       $pattern: hljs.IDENT_RE,
-      title: BLOCKS.join(' '),
-      keyword: STATEMENTS.concat(VAR_TYPES).concat(SPECIAL_FUNCTIONS).join(' '),
-      built_in: FUNCTIONS.join(' ')
+      title: BLOCKS,
+      keyword: STATEMENTS.concat(VAR_TYPES).concat(SPECIAL_FUNCTIONS),
+      built_in: FUNCTIONS
     },
     contains: [
       hljs.C_LINE_COMMENT_MODE,
@@ -531,7 +531,7 @@ function stan(hljs) {
       },
       {
         begin: '~\\s*(' + hljs.IDENT_RE + ')\\s*\\(',
-        keywords: DISTRIBUTIONS.join(' ')
+        keywords: DISTRIBUTIONS
       },
       {
         className: 'number',

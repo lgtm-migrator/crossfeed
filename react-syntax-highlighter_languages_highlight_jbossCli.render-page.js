@@ -1,10 +1,10 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_jbossCli"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/jboss-cli.js":
-/*!****************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/jboss-cli.js ***!
-  \****************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/jboss-cli.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/jboss-cli.js ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -42,7 +42,7 @@ function jbossCli(hljs) {
   };
   const PATH = {
     className: 'string',
-    begin: /\B(([\/.])[\w\-.\/=]+)+/
+    begin: /\B([\/.])[\w\-.\/=]+/
   };
   const COMMAND_PARAMS = {
     className: 'params',

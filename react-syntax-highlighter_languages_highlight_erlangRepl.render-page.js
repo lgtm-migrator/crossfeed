@@ -1,12 +1,37 @@
 exports.ids = ["react-syntax-highlighter_languages_highlight_erlangRepl"];
 exports.modules = {
 
-/***/ "./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/erlang-repl.js":
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/react-syntax-highlighter/node_modules/highlight.js/lib/languages/erlang-repl.js ***!
-  \******************************************************************************************************/
+/***/ "./node_modules/highlight.js/lib/languages/erlang-repl.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/highlight.js/lib/languages/erlang-repl.js ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
+
+/**
+ * @param {string} value
+ * @returns {RegExp}
+ * */
+
+/**
+ * @param {RegExp | string } re
+ * @returns {string}
+ */
+function source(re) {
+  if (!re) return null;
+  if (typeof re === "string") return re;
+
+  return re.source;
+}
+
+/**
+ * @param {...(RegExp | string) } args
+ * @returns {string}
+ */
+function concat(...args) {
+  const joined = args.map((x) => source(x)).join("");
+  return joined;
+}
 
 /*
 Language: Erlang REPL
@@ -41,7 +66,11 @@ function erlangRepl(hljs) {
       hljs.APOS_STRING_MODE,
       hljs.QUOTE_STRING_MODE,
       {
-        begin: '\\?(::)?([A-Z]\\w*(::)?)+'
+        begin: concat(
+          /\?(::)?/,
+          /([A-Z]\w*)/, // at least one identifier
+          /((::)[A-Z]\w*)*/ // perhaps more
+        )
       },
       {
         begin: '->'
